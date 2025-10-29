@@ -4,18 +4,6 @@
 
 Build complete software projects through natural conversation. No commands, no syntax—just talk to an AI and watch your project come to life.
 
-<div align="center">
-  <img src="https://img.shields.io/badge/🚀_Auto_Cursor-Autonomous_AI_Development-blue?style=for-the-badge" alt="Auto Cursor" />
-</div>
-
-[![CI](https://github.com/autocursor/autocursor/actions/workflows/ci.yml/badge.svg)](https://github.com/autocursor/autocursor/actions/workflows/ci.yml)
-[![NPM Version](https://img.shields.io/npm/v/auto-cursor.svg)](https://www.npmjs.com/package/auto-cursor)
-[![NPM Downloads](https://img.shields.io/npm/dm/auto-cursor.svg)](https://www.npmjs.com/package/auto-cursor)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-18.2-blue.svg)](https://reactjs.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![codecov](https://codecov.io/gh/autocursor/autocursor/branch/main/graph/badge.svg)](https://codecov.io/gh/autocursor/autocursor)
-
 ---
 
 ## Core Concept
