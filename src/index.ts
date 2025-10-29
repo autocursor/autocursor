@@ -13,6 +13,30 @@ export { AutoFlow, autoFlow } from './core/autoFlow';
 // Orchestrator - Initialize by importing
 import './utils/orchestrator';
 
+// Utilities
+export {
+  logger,
+  LogLevel,
+  ErrorHandler,
+  AutoCursorError,
+  AgentError,
+  WorkflowError,
+  ValidationError,
+  progressManager,
+  ProgressTracker,
+  Validator,
+  AgentInputValidator,
+  validate,
+} from './utils';
+
+export type {
+  LogEntry,
+  RetryConfig,
+  ProgressEvent,
+  Task,
+  ValidationResult,
+} from './utils';
+
 // Registry
 export { PurposeRegistry, purposeRegistry } from './registry/purposes';
 

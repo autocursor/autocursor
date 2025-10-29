@@ -1,3 +1,7 @@
+import { logger } from '../utils/logger';
+import { ErrorHandler, AgentError, tryCatch } from '../utils/errorHandler';
+import { AgentInputValidator } from '../utils/validation';
+
 /**
  * Base agent interface
  */
@@ -32,9 +36,43 @@ export abstract class BaseAgent {
   }
 
   /**
-   * Execute agent task
+   * Execute agent task with error handling and logging
    */
-  abstract execute(input: AgentInput): Promise<AgentOutput>;
+  async execute(input: AgentInput): Promise<AgentOutput> {
+    // Validate input
+    const validation = AgentInputValidator.validateAgentInput(input);
+    if (!validation.valid) {
+      const error = new AgentError(
+        `Invalid input: ${validation.errors.join('; ')}`,
+        this.name,
+        { input }
+      );
+      ErrorHandler.handle(error);
+      return { success: false, error };
+    }
+
+    // Log execution start
+    logger.info('agent', `${this.name} execution started`, { input });
+
+    // Execute with retry and error handling
+    return tryCatch(
+      () => this.executeInternal(input),
+      (error) => {
+        const agentError = new AgentError(
+          `Execution failed: ${error.message}`,
+          this.name,
+          { input, error: error.stack }
+        );
+        ErrorHandler.handle(agentError);
+        return { success: false, error: agentError };
+      }
+    );
+  }
+
+  /**
+   * Internal execution - override this instead of execute()
+   */
+  protected abstract executeInternal(input: AgentInput): Promise<AgentOutput>;
 
   /**
    * Get agent name
@@ -70,17 +108,17 @@ export abstract class BaseAgent {
   }
 
   /**
-   * Simulate AI processing (placeholder for actual AI integration)
+   * Log agent activity
    */
-  protected async simulateAIProcessing(prompt: string, context?: any): Promise<string> {
-    // In a real implementation, this would call an LLM API
-    // For now, return a structured placeholder response
-    return JSON.stringify({
-      agent: this.name,
-      prompt: prompt.substring(0, 100) + '...',
-      context: context ? 'Context provided' : 'No context',
-      timestamp: Date.now(),
-    });
+  protected log(message: string, data?: any): void {
+    logger.info(this.name, message, data);
+  }
+
+  /**
+   * Log agent error
+   */
+  protected logError(message: string, error?: Error): void {
+    logger.error(this.name, message, { error: error?.message, stack: error?.stack });
   }
 }
 

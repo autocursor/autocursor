@@ -15,10 +15,12 @@ export class LeadAgent extends BaseAgent {
   }
 
   /**
-   * Execute lead agent task
+   * Execute lead agent task (internal implementation)
    */
-  async execute(input: AgentInput): Promise<AgentOutput> {
+  protected async executeInternal(input: AgentInput): Promise<AgentOutput> {
     const userMessage = input.userMessage || '';
+    
+    this.log('Processing user message', { messageLength: userMessage.length });
 
     try {
       // Detect if user is selecting a purpose
