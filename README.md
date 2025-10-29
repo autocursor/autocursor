@@ -1,12 +1,20 @@
-# Auto Cursor
+# 🚀 Auto Cursor
 
 > **Autonomous, event-driven multi-agent orchestration plugin for Cursor IDE**
 
 Build complete software projects through natural conversation. No commands, no syntax—just talk to an AI and watch your project come to life.
 
+[![CI](https://github.com/autocursor/autocursor/actions/workflows/ci.yml/badge.svg)](https://github.com/autocursor/autocursor/actions/workflows/ci.yml)
+[![NPM Version](https://img.shields.io/npm/v/auto-cursor.svg)](https://www.npmjs.com/package/auto-cursor)
+[![NPM Downloads](https://img.shields.io/npm/dm/auto-cursor.svg)](https://www.npmjs.com/package/auto-cursor)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18.2-blue.svg)](https://reactjs.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![codecov](https://codecov.io/gh/autocursor/autocursor/branch/main/graph/badge.svg)](https://codecov.io/gh/autocursor/autocursor)
+
 ---
 
-## Core Concept
+## 🎯 Core Concept
 
 **Auto Cursor** is a single-chat, multi-agent orchestration system that enables full software project creation through natural conversation.
 
@@ -18,17 +26,17 @@ The user talks to **one visible agent** (the "Lead Agent"), selecting only a pro
 
 From that point, the plugin:
 
-1. **[Dynamic]** Creates specialized agent teams for that purpose
-2. **[Intelligent]** Chooses an optimal tech stack automatically
-3. **[Autonomous]** Manages all roles (analyst, architect, devs, testers, etc.) invisibly
-4. **[Continuous]** Progresses through the entire SDLC autonomously
-5. **[Natural]** Keeps all user communication natural and context-aware
+1. **✨ Dynamically** creates specialized agent teams for that purpose
+2. **🎯 Intelligently** chooses an optimal tech stack automatically
+3. **🤖 Autonomously** manages all roles (analyst, architect, devs, testers, etc.) invisibly
+4. **🔄 Continuously** progresses through the entire SDLC autonomously
+5. **💬 Naturally** keeps all user communication natural and context-aware
 
 **The user never issues commands, selects agents, or types special syntax.**
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
 ### Main Components
 
@@ -81,7 +89,7 @@ From that point, the plugin:
 
 ---
 
-## Supported Project Types
+## 🧩 Supported Project Types
 
 | Purpose | Backend | Frontend/Client | Extras |
 |---------|---------|-----------------|--------|
@@ -102,7 +110,7 @@ Each purpose dynamically determines:
 
 ---
 
-## Event-Driven Flow
+## ⚙️ Event-Driven Flow
 
 1. User selects a purpose (via dropdown or first chat message)
 2. **LeadAgent** emits `purpose.selected` event
@@ -113,7 +121,7 @@ Each purpose dynamically determines:
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Installation
 
@@ -178,7 +186,7 @@ function App() {
 
 ---
 
-## Project Structure
+## 🧱 Project Structure
 
 ```
 src/
@@ -220,7 +228,7 @@ src/
 
 ---
 
-## Interaction Examples
+## 💬 Interaction Examples
 
 ### Example 1: Starting a Web Project
 
@@ -258,7 +266,7 @@ All files have been generated and organized in your project directory."
 
 ---
 
-## Configuration
+## 🔧 Configuration
 
 ### Custom Purpose Registration
 
@@ -338,32 +346,32 @@ npm run build --production
 
 ---
 
-## Key Features
+## 🎯 Key Features
 
-### ► Zero-Command UX
+### 🔹 Zero-Command UX
 Users only chat—no special syntax or commands needed.
 
-### ► Dynamic Team Creation
+### 🔹 Dynamic Team Creation
 Agents spawn automatically based on selected purpose.
 
-### ► Auto Summarization
+### 🔹 Auto Summarization
 Lead Agent condenses inter-agent logs into natural replies.
 
-### ► Persistent Memory
+### 🔹 Persistent Memory
 Project context stored as JSON per session.
 
-### ► Auto Tech Stack Setup
+### 🔹 Auto Tech Stack Setup
 Loads prompts and templates matching the chosen purpose.
 
-### ► Extensible
+### 🔹 Extensible
 New purposes and stacks can be added by editing `purposes.ts`.
 
-### ► Integrated Workflows
+### 🔹 Integrated Workflows
 Uses Makefile and GitHub Actions templates within generated projects.
 
 ---
 
-## API Reference
+## 🔌 API Reference
 
 ### Core Classes
 
@@ -412,7 +420,7 @@ eventBus.emit(EventType.USER_MESSAGE, {
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
 
@@ -429,13 +437,13 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 
 ---
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 - Built with TypeScript, React, and modern web technologies
 - Inspired by autonomous agent systems and LLM orchestration patterns
@@ -443,7 +451,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## Support
+## 📞 Support
 
 - **Issues:** [GitHub Issues](https://github.com/your-org/autocursor/issues)
 - **Discussions:** [GitHub Discussions](https://github.com/your-org/autocursor/discussions)
@@ -451,7 +459,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## Roadmap
+## 🗺️ Roadmap
 
 - [ ] Integration with Claude/GPT APIs for real AI execution
 - [ ] Visual project dashboard
