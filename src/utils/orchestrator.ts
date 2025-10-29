@@ -92,5 +92,32 @@ eventBus.on(EventType.PURPOSE_SELECTED, (payload: any) => {
   orchestrator.setupAgentsForPurpose(payload.purposeId);
 });
 
+// Listen for development phase to coordinate parallel agent execution
+eventBus.on(EventType.PHASE_DEVELOPMENT_START, async () => {
+  const purpose = purposeRegistry.get('web-development'); // Simplified for now
+  const developmentAgents = [AgentRole.BACKEND, AgentRole.FRONTEND];
+  
+  // Execute development agents in parallel
+  const agentPromises = developmentAgents
+    .map(role => agentManager.getAgentsByRole(role))
+    .flat()
+    .map(instance => instance.agent.execute({}));
+  
+  try {
+    const results = await Promise.all(agentPromises);
+    
+    // Emit development complete
+    eventBus.emit(EventType.PHASE_DEVELOPMENT_COMPLETE, {
+      timestamp: Date.now(),
+      phase: 'development',
+      result: results,
+      artifacts: results.reduce((acc, r) => ({ ...acc, ...r.artifacts }), {}),
+      source: 'Orchestrator',
+    });
+  } catch (error) {
+    console.error('Development phase failed:', error);
+  }
+});
+
 export const orchestrator = new Orchestrator();
 

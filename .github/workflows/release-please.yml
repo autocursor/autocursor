@@ -1,0 +1,66 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Please
+        uses: google-github-actions/release-please-action@v4
+        id: release
+        with:
+          release-type: node
+          package-name: auto-cursor
+          changelog-types: |
+            [
+              {"type":"feat","section":"Features","hidden":false},
+              {"type":"fix","section":"Bug Fixes","hidden":false},
+              {"type":"docs","section":"Documentation","hidden":false},
+              {"type":"perf","section":"Performance","hidden":false},
+              {"type":"refactor","section":"Refactoring","hidden":false},
+              {"type":"test","section":"Tests","hidden":false},
+              {"type":"build","section":"Build System","hidden":false},
+              {"type":"ci","section":"CI/CD","hidden":false}
+            ]
+      
+      - name: Checkout code
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm ci
+      
+      - name: Build project
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm run build
+      
+      - name: Publish to NPM
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+      - name: Announce release
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          echo "🎉 Released version ${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}"
+          echo "📦 NPM: https://www.npmjs.com/package/auto-cursor"
+          echo "🔗 GitHub: https://github.com/${{ github.repository }}/releases/tag/v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}"
+

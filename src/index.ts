@@ -10,6 +10,9 @@ export { MemoryStore, memoryStore, ProjectStatus } from './core/memoryStore';
 export { AgentManager, agentManager, AgentRole } from './core/agentManager';
 export { AutoFlow, autoFlow } from './core/autoFlow';
 
+// Orchestrator - Initialize by importing
+import './utils/orchestrator';
+
 // Registry
 export { PurposeRegistry, purposeRegistry } from './registry/purposes';
 

@@ -4,26 +4,60 @@
   "description": "Autonomous, event-driven multi-agent orchestration plugin for Cursor IDE",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
     "dev": "tsc --watch",
     "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build && npm test",
     "test": "jest",
+    "test:ci": "jest --ci --coverage --maxWorkers=2",
     "lint": "eslint src --ext .ts,.tsx",
-    "format": "prettier --write \"src/**/*.{ts,tsx,md}\""
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,md}\"",
+    "typecheck": "tsc --noEmit"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/autocursor/autocursor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/autocursor/autocursor/issues"
+  },
+  "homepage": "https://autocursor.github.io",
   "keywords": [
     "cursor",
+    "cursor-ide",
     "ide",
     "plugin",
+    "extension",
     "ai",
+    "ai-agent",
     "multi-agent",
     "autonomous",
-    "orchestration"
+    "orchestration",
+    "code-generation",
+    "automation",
+    "software-development",
+    "sdlc"
   ],
-  "author": "Auto Cursor Team",
+  "author": "Auto Cursor Team <hello@autocursor.dev>",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "eventemitter3": "^5.0.1",
     "uuid": "^9.0.1"
