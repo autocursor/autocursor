@@ -62,8 +62,8 @@ jobs:
             npm install auto-cursor@${{ steps.get_version.outputs.VERSION }}
             ```
             
-            ### Changes
-            See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
+            ### What's New
+            Check the [commit history](https://github.com/${{ github.repository }}/commits) for details.
           draft: false
           prerelease: false
         env:
