@@ -14,7 +14,7 @@ Build complete software projects through natural conversation. No commands, no s
 
 ---
 
-## 🧭 Core Concept
+## 🎯 Core Concept
 
 **Auto Cursor** is a single-chat, multi-agent orchestration system that enables full software project creation through natural conversation.
 
@@ -26,11 +26,11 @@ The user talks to **one visible agent** (the "Lead Agent"), selecting only a pro
 
 From that point, the plugin:
 
-1. ✨ Dynamically creates specialized agent teams for that purpose
-2. 🎯 Chooses an optimal tech stack automatically
-3. 🤖 Manages all roles (analyst, architect, devs, testers, etc.) invisibly
-4. 🔄 Progresses through the entire SDLC autonomously
-5. 💬 Keeps all user communication natural and context-aware
+1. **✨ Dynamically** creates specialized agent teams for that purpose
+2. **🎯 Intelligently** chooses an optimal tech stack automatically
+3. **🤖 Autonomously** manages all roles (analyst, architect, devs, testers, etc.) invisibly
+4. **🔄 Continuously** progresses through the entire SDLC autonomously
+5. **💬 Naturally** keeps all user communication natural and context-aware
 
 **The user never issues commands, selects agents, or types special syntax.**
 
